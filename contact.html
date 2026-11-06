@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Me - 182164 Bara'a Mohammed Awad Jdaya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html" class="active">Contact Me</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact me</h1>
+    <p>Send me a message and I will reply by email.</p>
+
+    <form id="contactForm" onsubmit="return validateForm(event)" novalidate>
+      <label for="fullname">Full name</label>
+      <input type="text" id="fullname" name="fullname">
+
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email">
+
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="">Select your country</option>
+        <option>Jordan</option>
+        <option>Saudi Arabia</option>
+        <option>United Arab Emirates</option>
+        <option>Palestine</option>
+        <option>Egypt</option>
+        <option>United States</option>
+        <option>United Kingdom</option>
+        <option>Other</option>
+      </select>
+
+      <label for="comments">Comments</label>
+      <textarea id="comments" name="comments" rows="5"></textarea>
+
+      <p id="error" role="alert"></p>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+
+  <footer>&copy; 2026 Bara'a Jdaya | SID: 182164</footer>
+
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+      var name = document.getElementById("fullname").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var country = document.getElementById("country").value;
+      var comments = document.getElementById("comments").value.trim();
+      var error = document.getElementById("error");
+
+      if (name === "" || email === "" || country === "" || comments === "") {
+        error.textContent = "Please fill in all fields before submitting.";
+        return false;
+      }
+      error.textContent = "";
+      alert("Thank you, " + name + "! Your form was submitted successfully.");
+      document.getElementById("contactForm").reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
